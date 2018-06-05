@@ -1,21 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="arrays.js">
-    </script>
 </head>
-<body>
-<br>   
 
-<h1>Todo List</h1>
-<br>
-<ul style="font-size: 20px">
-    <li> "new" - add a new todo</li>
-    <li> "list" - view what in list</li>
-    <li> "quit" - quit app</li>
-</ul>   
-    
+<body>
+    <br>
+
+    <h2>Todo List</h2>
+    <br>
+    <ul style="font-size: 20px">
+        <li> "new" - add a new todo</li>
+        <li> "delete" - delete a todo</li>
+        <li> "list" - view what in list</li>
+        <li> "quit" - quit app</li>
+    </ul>
+
 </body>
+
 </html>
+
+
+<script>
+    window.setTimeout(function() {
+
+        var todoList = [];
+
+        function list() {
+            console.log('********');
+            todoList.forEach(function(newlist, i) {
+                console.log(i + ": " + newlist);
+            });
+            console.log('********');
+        }
+
+        function deleteTodo() {
+            var delTodo = +prompt("Write a index to delete");
+            todoList.splice(delTodo, 1);
+            console.log("Todo deleted");
+        }
+
+        function newTodo() {
+            var newT = prompt("Write a todo");
+            todoList.push(newT);
+            console.log("Todo added");
+
+        }
+
+        console.log('"new" - add a new todo, "delete" - delete a todo, "list" - view what in list, "quit" - quit app');
+
+        var question = prompt("What you wanna do");
+
+
+        while (question !== "quit") {
+
+            if (question === "new") {
+                newTodo()
+            } else if (question === "delete") {
+                list();
+                deleteTodo();
+            } else if (question === "list") {
+                list();
+            }
+
+            question = prompt("What you wanna do");
+
+        }
+
+        console.log("Bye");
+
+    }, 500);
+    
+</script>
